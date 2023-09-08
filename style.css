@@ -1,0 +1,23 @@
+html,body{
+    background:rgb(50,50,50);
+    color:white;
+    font-weight:100;
+    width:800px;
+    height:600px;
+}
+h1{
+    text-align: center;
+}
+.column{
+    width:100%;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+}
+.buttonClicker{
+    width:50px;
+    height:50px;
+    border: 1px solid white;
+    border-radius:10px;
+    cursor:pointer;
+}

@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "Fwends",
+    "version": "1.0",
+    "description":"For u",
+    "icons":{
+        "128": "icon128.png",
+        "48": "icon48.png",
+        "16": "icon16.png"
+    },
+    "action":{
+        "default_icon":"icon16.png",
+        "default_popup":"popup.html"
+    },
+    "options_page": "options.html",
+    "permissions":[
+        "storage"
+    ]
+}
