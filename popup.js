@@ -3,6 +3,7 @@ let scoreElm = document.getElementById("count");
 function setName(name){
     chrome.storage.sync.set({"name": name });
 }
+
 function updateVisualName(){
     chrome.storage.sync.get('name',function(pull){
         document.getElementById("name").innerHTML = pull.name;
@@ -22,10 +23,11 @@ function countUp(){
     });
 }
 
+
 function updateVisualScore(){
     chrome.storage.sync.get('score',function(pull){
-        scoreElm.innerHTML = parseInt(pull.score);
-        updateBadgeVisual(pull.score.toString());
+        scoreElm.innerHTML = scoreToTime(parseInt(pull.score));
+        updateBadgeVisual(scoreToTime(pull.score));
     });
 }
 
@@ -51,12 +53,13 @@ function storageCheck(){
 
 function changeCatchers(){
     chrome.storage.onChanged.addListener(function(){
-        updateVisualName();
+            updateVisualScore();
+            updateVisualName();
     });
 }
 
 function checkForGoal(num){
-    if(num == 10){
+    if(num == 1010){
         var message = "Thats a whole " + num + " clicks!";
         sendMessage("NICE!", message);
     }
@@ -75,6 +78,19 @@ function sendMessage(title, message){
 document.getElementById("buttonClicker").addEventListener("mousedown",(event)=>{
     countUp();
 });
+
+function scoreToTime(score){
+    let minutes = Math.floor(score/60);
+    let seconds = Math.floor(score-(minutes*60));
+    console.log(minutes, seconds);
+    let stringTime ="";
+    if(seconds < 10){
+        stringTime = minutes.toString() + ":" + "0" + seconds.toString();
+    }else{
+        stringTime = minutes.toString() + ":" + seconds.toString();
+    }
+    return stringTime;
+}
 
 function startUp(){
     storageCheck();

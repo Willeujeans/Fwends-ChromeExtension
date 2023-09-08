@@ -15,7 +15,8 @@
     "options_page": "options.html",
     "background":{
         "service_worker":"eventPage.js",
-        "type": "module"
+        "type": "module",
+        "Persistent":true
     },
     "permissions":[
         "storage",
