@@ -1,9 +1,17 @@
 let scoreElm = document.getElementById("count");
 
+function setName(name){
+    chrome.storage.sync.set({"name": name });
+}
+function updateVisualName(){
+    chrome.storage.sync.get('name',function(pull){
+        document.getElementById("name").innerHTML = pull.name;
+    });
+}
 
 function setScore(num){
     chrome.storage.sync.set({"score": num }).then(() => {
-        updateVisualScore(num);
+        updateVisualScore();
         checkForGoal(num);
     });
 }
@@ -18,6 +26,7 @@ function updateVisualScore(){
     chrome.storage.sync.get('score',function(pull){
         console.log(pull.score);
         scoreElm.innerHTML = parseInt(pull.score);
+        chrome.action.setBadgeText({ text: pull.score.toString() });
     });
 }
 
@@ -27,6 +36,18 @@ function storageCheck(){
             setScore(0);
         }
         updateVisualScore();
+    });
+    chrome.storage.sync.get('name',function(pull){
+        if(pull.name == undefined){
+            setName("Dave");
+        }
+        updateVisualName();
+    });
+}
+
+function changeCatchers(){
+    chrome.storage.onChanged.addListener(function(){
+        updateVisualName();
     });
 }
 
@@ -51,4 +72,9 @@ document.body.addEventListener("mousedown",(event)=>{
     countUp();
 });
 
-storageCheck();
+function startUp(){
+    storageCheck();
+    changeCatchers();
+}
+
+startUp();

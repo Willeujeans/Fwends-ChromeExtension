@@ -2,8 +2,6 @@ html,body{
     background:rgb(50,50,50);
     color:white;
     font-weight:100;
-    width:800px;
-    height:600px;
 }
 h1{
     text-align: center;
@@ -21,3 +19,12 @@ h1{
     border-radius:10px;
     cursor:pointer;
 }
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }

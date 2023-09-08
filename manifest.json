@@ -13,8 +13,15 @@
         "default_popup":"popup.html"
     },
     "options_page": "options.html",
+    "background":{
+        "service_worker":"eventPage.js",
+        "type": "module"
+    },
     "permissions":[
         "storage",
-        "notifications"
+        "notifications",
+        "contextMenus",
+        "activeTab",
+        "scripting"
     ]
 }
