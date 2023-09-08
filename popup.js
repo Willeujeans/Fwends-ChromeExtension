@@ -24,10 +24,14 @@ function countUp(){
 
 function updateVisualScore(){
     chrome.storage.sync.get('score',function(pull){
-        console.log(pull.score);
         scoreElm.innerHTML = parseInt(pull.score);
-        chrome.action.setBadgeText({ text: pull.score.toString() });
+        updateBadgeVisual(pull.score.toString());
     });
+}
+
+function updateBadgeVisual(updatedText){
+    chrome.action.setBadgeBackgroundColor({ color: [0,0,0,50] });
+    chrome.action.setBadgeText({ text: updatedText});
 }
 
 function storageCheck(){
@@ -68,7 +72,7 @@ function sendMessage(title, message){
     chrome.notifications.create("messageNotif", notifOptions);
 }
 
-document.body.addEventListener("mousedown",(event)=>{
+document.getElementById("buttonClicker").addEventListener("mousedown",(event)=>{
     countUp();
 });
 
