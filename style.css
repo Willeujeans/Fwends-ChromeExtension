@@ -1,12 +1,21 @@
 html,body{
-    background:rgb(50,50,50);
+    background:#7f6991;
     color:white;
     font-weight:100;
     min-width:300px;
     border-radius:10px;
 }
+.imageBack{
+    background:rgb(255,255,255,.3);
+    border-radius:10px;
+    border:4px solid black;
+    padding:5px;
+}
 h1{
+    color:black;
+    font-size:3rem;
     text-align: center;
+    margin:0;
 }
 .column{
     width:100%;
@@ -33,6 +42,7 @@ h1{
 }
 
 #buttonClicker{
+    margin:1rem;
     position: relative;
     cursor:pointer;
     border-radius:10px;
@@ -42,7 +52,7 @@ h1{
     align-items: center;
     justify-content: center;
     justify-items: center;
-    width:200px;
+    width:150px;
     height:80px;
     background:transparent;
 }
@@ -58,7 +68,7 @@ h1{
   .button_top {
     z-index: 1;
     text-align: center;
-    width:85%;
+    width:80.5%;
     border:4px solid black;
     padding:1rem 1rem 1rem 1rem;
     background:white;
